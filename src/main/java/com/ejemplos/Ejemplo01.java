@@ -1,10 +1,12 @@
+package com.ejemplos;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ejemplo {
+public class Ejemplo01 {
     public static void main(String[] args) {
 
         List<Integer> elementosFromMono = new ArrayList<>();
