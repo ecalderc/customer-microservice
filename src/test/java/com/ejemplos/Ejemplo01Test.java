@@ -13,23 +13,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Ejemplo01Test {
 
     @Test
-    public void testMonoFluxSubscription() {
-        List<Integer> elementosFromMono = new ArrayList<>();
-        List<Integer> elementosFromFlux = new ArrayList<>();
-
-        //Mono
-        //Mono<Integer> mono = Mono.just(18);
+    public void testFluxInteger() {
 
         //Flux
         Flux<Integer> flux = Flux.just(1, 2, 3, 4, 5);
 
-        // Subscription
+        // Test
         StepVerifier.create(flux)
                 .expectNext(1)
                 .expectNext(2)
                 .expectNext(3)
                 .expectNext(4)
                 .expectNext(5)
+                .expectComplete()
+                .verify();
+    }
+
+    @Test
+    public void testFluxString() {
+
+        //Flux
+        Flux<String> flux = Flux.just("Jessica", "Jhon", "Tomas", "Melissa", "Steve", "Megan", "Monica", "Henry")
+                .filter(nombre -> nombre.length() <= 5)
+                .map(String::toUpperCase);
+
+        // Test
+        StepVerifier.create(flux)
+                .expectNext("JHON")
+                .expectNext("TOMAS")
+                .expectNextMatches(nombre -> nombre.startsWith("ST"))
+                .expectNext("MEGAN")
+                .expectNext("HENRY")
                 .expectComplete()
                 .verify();
     }
