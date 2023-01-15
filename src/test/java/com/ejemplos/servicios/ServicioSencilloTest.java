@@ -7,11 +7,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-@SpringBootTest
+@SpringBootTest(classes=ServicioSencillo.class)
 class ServicioSencilloTest {
 
     @Autowired
-    ServicioSencillo servicioSencillo;
+    private ServicioSencillo servicioSencillo;
 
     @Test
     void buscarUnoTest() {
