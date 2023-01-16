@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nttdata.bootcamp</groupId>
-	<artifactId>customer</artifactId>
+	<artifactId>customer-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customer</name>
 	<description>Customer Microservice</description>
