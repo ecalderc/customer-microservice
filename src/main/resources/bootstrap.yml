@@ -1,6 +1,8 @@
 spring:
   application:
     name: customer
+  config:
+    import: "optional:configserver:https://config-server-ecalderc.azurewebsites.net"
   cloud:
     config:
       uri: ${CONFIG_URI:http://localhost:8888}
