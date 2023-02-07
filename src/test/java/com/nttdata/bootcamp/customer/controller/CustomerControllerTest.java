@@ -1,7 +1,6 @@
 package com.nttdata.bootcamp.customer.controller;
 
 import com.nttdata.bootcamp.customer.entity.Customer;
-import com.nttdata.bootcamp.customer.entity.dto.BusinessCustomerDto;
 import com.nttdata.bootcamp.customer.entity.dto.PersonalCustomerDto;
 import com.nttdata.bootcamp.customer.service.CustomerService;
 import org.junit.jupiter.api.Test;
@@ -124,6 +123,22 @@ class CustomerControllerTest {
         // verify
         verify(customerService).deleteCustomer("12345678");
         assertEquals(Mono.just(customer), result);
+    }
+
+    @Test
+    public void findCustomerByDni_serviceDown_fallbackCalled() {
+        // Given
+        String dni = "12345678";
+        Mono<String> expectedResult = Mono.just("Customer Microservice is not responding");
+
+        when(customerService.findCustomerByDni(dni)).thenReturn(Mono.error(new RuntimeException()));
+
+        // When
+        Mono<Customer> result = customerController.findCustomerByDni(dni);
+
+        // Then
+        assertEquals(expectedResult.block(), result.block());
+        verify(customerService).findCustomerByDni(dni);
     }
      */
 
