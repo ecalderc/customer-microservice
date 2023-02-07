@@ -49,14 +49,14 @@ public class CustomerController {
     }
 
     //Update customer status
-    @PutMapping("/updateStatus/{dni}")
-    public Mono<Customer> updateCustomerStatus(@PathVariable("dni") String dni, @RequestBody Customer customer) {
+    @PutMapping("/updateStatus")
+    public Mono<Customer> updateCustomerStatus(@RequestBody Customer customer) {
         return customerService.updateCustomerStatus(customer);
     }
 
     //Update customer address
-    @PutMapping("/updateAddress/{dni}")
-    public Mono<Customer> updateCustomerAddress(@PathVariable("dni") String dni, @RequestBody Customer customer) {
+    @PutMapping("/updateAddress")
+    public Mono<Customer> updateCustomerAddress(@RequestBody Customer customer) {
         return customerService.updateCustomerAddress(customer);
     }
 
